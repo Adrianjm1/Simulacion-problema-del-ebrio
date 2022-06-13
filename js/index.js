@@ -19,9 +19,10 @@ const simulacion = () => {
             calcular();
         }
         evaluar();
-
+        
     }
-
+    
+    getProb(datos);
     graficar(datos);
 }
 
@@ -81,8 +82,16 @@ const graficar = (datos) => {
 
 }
 
+const getProb = (datos)=>{
+
+    //reducer para sumar los valores verdaderos
+    const verdadero = datos.reduce((a,b)=>a+b);
+    const probVerdadero = (verdadero / datos.length)*100;
+    document.getElementById("prob").innerHTML = `La probabilidad de exito es ${probVerdadero} %` ;
+    document.getElementById("prob").hidden = false;
+}
+
 
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
 }
-
